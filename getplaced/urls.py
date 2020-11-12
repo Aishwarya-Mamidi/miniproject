@@ -7,6 +7,9 @@ urlpatterns=[
     path('vlogin/',views.vlogin,name='vlogin'),
     path('ssignup/',views.ssignup,name='ssignup'),
     path('ssign/',views.ssign,name='ssign'),
+    path('admlogin/',views.admlogin,name='admlogin'),
+    path('alogin/',views.alogin,name='alogin'),
+
 
 
 

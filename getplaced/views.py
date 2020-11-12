@@ -6,6 +6,8 @@ from getplaced.models import Studtb
 from getplaced.forms import StudtbForm
 from getplaced.models import Student
 from getplaced.forms import StudentForm
+from getplaced.models import Admintb
+from getplaced.forms import AdmintbForm
 
 
 import requests
@@ -13,6 +15,9 @@ def first(request):
     return render(request,'welcome.html')
 def login(request):
     return render(request,'login.html')
+
+def admlogin(request):
+    return render(request,'admlogin.html')
 
 def ssignup(request):
     return render(request,'studsignup.html')
@@ -56,6 +61,34 @@ def ssign(request):
     else:
         form=StudentForm()
     return render(request,'studsignup.html')
+
+def alogin(request):
+    if request.method == "POST":
+        print("hii")
+        try:
+            print("hello")
+            username=request.POST['username']
+            email_id=request.POST['email_id']
+            password=request.POST['password']
+            for a_users in Admintb.objects.all():
+                print(str(a_users.username))
+                if str(a_users.username)==username  and str(a_users.email_id)==email_id:
+                    print("aaa")
+                    login_obj=a_users
+                    break
+                else:
+                    login_obj=None
+            if login_obj is not None:
+                if str(login_obj.password)==password:
+                    return redirect('/admin')
+                else:
+                    return redirect('/admlogin')
+            return redirect('/admlogin')            
+        except:
+            return HttpResponse("exception...")
+        
+
+
 
 
 
