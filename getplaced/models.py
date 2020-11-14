@@ -40,8 +40,11 @@ class Project(models.Model):
     project_des=models.CharField(max_length=25)
     tech_stack=models.CharField(max_length=25)
 
-class Placement_history(models.Model):
+class Placement_History(models.Model):
+    pyear=models.IntegerField()
     company_name=models.CharField(max_length=25)
+    package=models.IntegerField(default=0)
+    ptype=models.CharField(max_length=25)
     students_applied=models.IntegerField()
     students_placed=models.IntegerField()
 
@@ -54,14 +57,22 @@ class Interview_details(models.Model):
     job_description=models.CharField(max_length=25)
     requisites=models.CharField(max_length=25)
     selection_process=models.CharField(max_length=25)
+    link=models.URLField(max_length=200,default="https://www.facebook.com")
+    time=models.TimeField()
+    date=models.DateField()
+    added_by=models.CharField(max_length=25)
+    added_on=models.DateField()
 
     def __str__(self):
         return self.company_name
 
 class Suggestions(models.Model):
+    title=models.CharField(max_length=25)
     mock_tests=models.URLField(max_length=200)
     tips=models.CharField(max_length=25)
     video_links=models.URLField(max_length=200)
+    added_on=models.DateField()
+    added_by=models.CharField(max_length=25)
 
 class Register(models.Model):
     roll_no=models.ForeignKey(Student,to_field="roll_no",db_column="roll_no",on_delete=models.CASCADE)

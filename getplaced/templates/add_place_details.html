@@ -1,0 +1,149 @@
+{% load static %}
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   <link rel="stylesheet" type="text/css" href="{% static 'css/basestyle.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <title>GetPlaced</title>
+    
+    <style type="text/css">
+        .asteriskField {
+            display: none;
+        }
+
+        form .alert ul li {
+            list-style: none;
+        }
+
+        form .alert ul {
+            padding: 0;
+            margin: 0;
+        }
+
+       
+.btn-link{
+	color: #006600 !important;
+}
+
+	</style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4" id="mynav">
+        <div class="container">
+            <img src="{% static 'images/cap.png' %}" width="50px" height="50px" ><a class="navbar-brand" href="#">GetPlaced</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+           
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                <ul class="navbar-nav mr-auto">
+                   
+                    
+                </ul>
+                
+                <ul class="navbar-nav">
+                   
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <a href="{% url 'opensugg' %}" class="btn btn-outline-light">Suggestions</a>
+                  <a href="{% url 'viewsugg' %}" class="btn btn-outline-light">View suggestions</a>
+                  <a href="{%url 'placehis' %}" class="btn btn-outline-light">Add Placement history</a>
+                  <a href="{%url 'viewplacehis' %}" class="btn btn-outline-light">View Placement history</a>
+                  <a href="{%url 'addplacedetails' %}" class="btn btn-light ml-2">Add Placement Details</a>
+              </form>
+                
+            </div>
+        </div>
+    </nav>
+
+
+
+
+<div class="row justify-content-center" >
+    <div class="col-6" >
+      <div class="card">
+        <div class="card-body">
+            <div class="container" >
+             <form action='{% url 'addplacedetails' %}' method="POST">
+              {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Add Placement Details</legend>
+                          <div class="form-group">
+                            <label for="company_name">Company Name:</label>
+                            <input type="text" class="form-control" id="company_name" placeholder="Enter company name" name="company_name">
+                          </div>
+                          <div class="form-group">
+                            <label for="job_title">Job Title:</label>
+                            <input type="text" class="form-control" id="job_title" placeholder="Enter job title" name="job_title">
+                          </div>
+                          <div class="form-group">
+                            <label for="job_description">Job Description:</label>
+                            <input type="text" class="form-control" id="job_description" placeholder="Enter job description" name="job_description">
+                          </div>
+                          <div class="form-group">
+                            <label for="requisites">Requisites:</label>
+                            <input type="text" class="form-control" id="requisites" placeholder="Enter requisites" name="requisites">
+                          </div>
+                          <div class="form-group">
+                            <label for="selection_process">Selection Process:</label>
+                            <input type="text" class="form-control" id="selection_process" placeholder="Enter selection process" name="selection_process">
+                          </div>
+                          <div class="form-group">
+                            <label for="link">Registration link:</label>
+                            <input type="url" class="form-control" id="link" placeholder="Enter link" name="link">
+                          </div>
+                          <div class="form-group">
+                            <label for="date">Date of test:</label>
+                            <input type="date" class="form-control" id="date" placeholder="Enter date" name="date">
+                          </div>
+                          <div class="form-group">
+                            <label for="time">Time:</label>
+                            <input type="time" class="form-control" id="time" placeholder="Enter time" name="time">
+                          </div> 
+                          <div class="form-group">
+                            <label for="added_by">Author:</label>
+                            <input type="text" class="form-control" id="added_by" placeholder="Enter username" name="added_by">
+                          </div> 
+                          <div class="form-group">
+                            <label for="added_on">Date:</label>
+                            <input type="date" class="form-control" id="added_on" placeholder="Enter post date" name="added_on">
+                          </div> 
+                </fieldset>
+            
+                <div class="form-group">
+                        <button class="btn btn-outline-success" type="submit">POST</button>
+                </div>
+        </form>
+    </div>
+            <!--<a href="#" class="btn btn-link">Forgot your password?</a>-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ <!-- <section class="social-menu">
+    
+  <h5>For any queries/issues please contact us at:</h5>
+  <ul>
+
+      <li><a href="#"><i class="fa fa-google"></i></a></li>
+      <li><a href="#"><i class="fa fa-paper-plane"></i></a></li>
+    <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+     <li><a href="#"><i class="fa fa-yahoo"></i></a></li>
+  </ul>
+
+</section>  -->
+
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+{% load static %}
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   <link rel="stylesheet" type="text/css" href="{% static 'css/basestyle.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <title>GetPlaced</title>
+    
+    <style type="text/css">
+        .asteriskField {
+            display: none;
+        }
+
+        form .alert ul li {
+            list-style: none;
+        }
+
+        form .alert ul {
+            padding: 0;
+            margin: 0;
+        }
+
+       
+.btn-link{
+	color: #006600 !important;
+}
+
+	</style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4" id="mynav">
+        <div class="container">
+            <img src="{% static 'images/cap.png' %}" width="50px" height="50px" ><a class="navbar-brand" href="#">GetPlaced</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+           
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                <ul class="navbar-nav mr-auto">
+                   
+                    
+                </ul>
+                
+                <ul class="navbar-nav">
+                   
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <a href="{% url 'opensugg' %}" class="btn btn-outline-light">Suggestions</a>
+                    <a href="{% url 'viewsugg' %}" class="btn btn-outline-light">View suggestions</a>
+                    <a href="{%url 'placehis' %}" class="btn btn-light ml-2">Add Placement history</a>
+                    <a href="{%url 'viewplacehis' %}" class="btn btn-outline-light">View Placement history</a>
+                    <a href="{%url 'addplacedetails' %}" class="btn btn-outline-light">Add Placement Details</a>
+                </form>
+                
+            </div>
+        </div>
+    </nav>
+
+
+
+
+<div class="row justify-content-center" >
+    <div class="col-6" >
+      <div class="card">
+        <div class="card-body">
+            <div class="container" >
+             <form action='{% url 'placehis' %}' method="POST">
+              {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Add placement history</legend>
+                          <div class="form-group">
+                            <label for="pyear">Year:</label>
+                            <input type="number" class="form-control" id="pyear" placeholder="Enter year" name="pyear">
+                          </div>
+                          <div class="form-group">
+                            <label for="company_name">Company name:</label>
+                            <input type="text" class="form-control" id="company_name" placeholder="Enter company name" name="company_name">
+                          </div>
+                          <div class="form-group">
+                            <label for="package">Package:</label>
+                            <input type="number" class="form-control" id="package" placeholder="Enter package" name="package">
+                          </div>
+                          <div class="form-group">
+                            <label for="ptype">Type:</label>
+                            <input type="text" class="form-control" id="ptype" placeholder="Enter type" name="ptype">
+                          </div>
+                          <div class="form-group">
+                            <label for="students_applied">Number of Students Applied:</label>
+                            <input type="number" class="form-control" id="students_applied" placeholder="Enter number of Students Applied" name="students_applied">
+                          </div>
+                          <div class="form-group">
+                            <label for="students_placed">Number of Students placed:</label>
+                            <input type="number" class="form-control" id="students_applied" placeholder="Enter number of Students placed" name="students_placed">
+                          </div>
+    
+                </fieldset>
+            
+                <div class="form-group">
+                        <button class="btn btn-outline-success" type="submit">POST</button>
+                </div>
+        </form>
+    </div>
+            <!--<a href="#" class="btn btn-link">Forgot your password?</a>-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ <!-- <section class="social-menu">
+    
+  <h5>For any queries/issues please contact us at:</h5>
+  <ul>
+
+      <li><a href="#"><i class="fa fa-google"></i></a></li>
+      <li><a href="#"><i class="fa fa-paper-plane"></i></a></li>
+    <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+     <li><a href="#"><i class="fa fa-yahoo"></i></a></li>
+  </ul>
+
+</section>  -->
+
+</body>
+
+</html>
