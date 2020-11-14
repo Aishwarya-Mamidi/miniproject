@@ -54,61 +54,44 @@
                    
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <a href="{% url 'login' %}" class="btn btn-light ml-2">Log in</a>
-                    <a href="{% url 'ssignup' %}" class="btn btn-outline-light">Sign up</a>
+                    <a href="{% url 'sviewsugg' %}" class="btn btn-outline-light">View suggestions</a>
+                    <a href="{%url 'sviewplacehis' %}" class="btn btn-outline-light">View Placement history</a>
+                    <!--<a href="{%url 'addplacedetails' %}" class="btn btn-outline-light">Add Placement Details</a>
+                    <a href="{%url 'viewplacedetails' %}" class="btn btn-outline-light">View Placement Details</a>-->
+                    <a href="{%url 'sviewplacedetails' %}" class="btn btn-outline-light">View Placement Details</a>
+                    <a href="{%url 'slogout' %}" class="btn btn-outline-light">logout</a>
                 </form>
                 
             </div>
         </div>
     </nav>
-
-
-
-
-<div class="row justify-content-center" >
-    <div class="col-6" >
-      <div class="card">
-        <div class="card-body">
-            <div class="container" >
-             <form action='{% url 'vlogin' %}' method="POST">
-              {% csrf_token %}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Log In</legend>
-                          <div class="form-group">
-                            <label for="Username">Username:</label>
-                            <input type="text" class="form-control" id="Username" placeholder="Enter Username" name="Username">
-                          </div>
-                          <div class="form-group">
-                            <label for="pwd">Password:</label>
-                            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-                          </div>
-                </fieldset>
-            
-                <div class="form-group">
-                        <button class="btn btn-outline-success" type="submit">Login</button>
+    <article class="media content-section">
+        <div class="row">
+        {% for i in sugg %}
+        <div class="col-lg-4">
+        <div class="media-body">
+            <div class="article-metadata">
+            <a class="mr-2" href="#">{{ i.added_by }}</a>
+            <small class="text-muted">{{ i.added_on|date:"F d, Y" }}</small>
+            <!--{% if request.session.username == i.added_by %}
+                <div>
+                    <a class = "btn btn-secondary btn-sm mt-1 mb-1" href = "{% url 'home' %}">Update</a>
+                    <a class = "btn btn-danger btn-sm mt-1 mb-1" href = "{% url 'del_sugg' pk=i.pk %}">Delete</a>
                 </div>
-        </form>
-    </div>
-            <a href="#" class="btn btn-link">Forgot your password?</a>
-
+            {% endif %}-->
+            </div>
+            <h2 class="article-title">{{ i.title }}</h2>
+            <p class="article-content"><b>Mock test links:</b> {{ i.mock_tests }}</p>
+            <p class="article-content"><b>Tips:</b>{{ i.tips }} </p>
+            <p class="article-content"><b>Video links:</b> {{ i.video_links }}</p>
+            <!--<img src = "{{ object.site_image.url }}">-->
         </div>
-      </div>
-    </div>
-  </div>
-  
-  <section class="social-menu">
-    
-  <h5>For any queries/issues please contact us at:</h5>
-  <ul>
+        </div>
+        {%endfor%}
+        </div>
+        </article>
+    </body>
+</html>
 
-      <li><a href="#"><i class="fa fa-google"></i></a></li>
-      <li><a href="#"><i class="fa fa-paper-plane"></i></a></li>
-    <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-     <li><a href="#"><i class="fa fa-yahoo"></i></a></li>
-  </ul>
-
-</section>  
-
-</body>
-
+    </body>
 </html>

@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,get_object_or_404
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
@@ -31,6 +31,10 @@ def ssignup(request):
 
 def home(request):
     return render(request,'home.html')
+
+def shome(request):
+    return render(request,'shome.html')
+    
 def opensugg(request):
     return render(request,'add_sugg.html')
 
@@ -40,18 +44,53 @@ def viewsugg(request):
     }
     return render(request,'sugg_detail.html',context)
 
+def sviewsugg(request):
+    context={
+        'sugg':Suggestions.objects.all()
+    }
+    return render(request,'studview_sugg.html',context)
+
+def del_sugg(request,pk):
+    i=get_object_or_404(Suggestions,pk=pk)
+    i.delete()
+    return redirect('/home')
+    
+def del_place_details(request,pk):
+    k=get_object_or_404(Interview_details,pk=pk)
+    k.delete()
+    return redirect('/home')
+    
+def alogout(request):
+    return redirect('/admlogin')
+
+def slogout(request):
+    return redirect('/login')
+
 def viewplacehis(request):
     context={
         'plac':Placement_History.objects.all().order_by('-pyear')
     }
     return render(request,'viewplace_his.html',context)
 
+def sviewplacehis(request):
+    context={
+        'plac':Placement_History.objects.all().order_by('-pyear')
+    }
+    return render(request,'sview_place_his.html',context)
+
 def viewplacedetails(request):
     context={
         'details':Interview_details.objects.all()
     }
     return render(request,'view_place_details.html',context)
+
+def sviewplacedetails(request):
+    context={
+        'details':Interview_details.objects.all()
+    }
+    return render(request,'sview_place_details.html',context)
     
+
 def vlogin(request):
     if request.method == "POST":
         try:
@@ -68,7 +107,7 @@ def vlogin(request):
                     login_obj=None
             if login_obj is not None:
                 if str(login_obj.pwd)==pwd:
-                    return redirect('/admin')
+                    return redirect('/shome')
                 else:
                     return redirect('/vlogin')
         except:

@@ -31,6 +31,9 @@
 	color: #006600 !important;
 }
 
+table,th,td{
+    border:1px solid black;
+}
 	</style>
 
 </head>
@@ -54,61 +57,42 @@
                    
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <a href="{% url 'login' %}" class="btn btn-light ml-2">Log in</a>
-                    <a href="{% url 'ssignup' %}" class="btn btn-outline-light">Sign up</a>
+                    <a href="{% url 'sviewsugg' %}" class="btn btn-outline-light">View suggestions</a>
+                    <a href="{%url 'sviewplacehis' %}" class="btn btn-outline-light">View Placement history</a>
+                    <!--<a href="{%url 'addplacedetails' %}" class="btn btn-outline-light">Add Placement Details</a>
+                    <a href="{%url 'viewplacedetails' %}" class="btn btn-outline-light">View Placement Details</a>-->
+                    <a href="{%url 'sviewplacedetails' %}" class="btn btn-outline-light">View Placement Details</a>
+                    <a href="{%url 'slogout' %}" class="btn btn-outline-light">logout</a>
                 </form>
                 
             </div>
         </div>
     </nav>
-
-
-
-
-<div class="row justify-content-center" >
-    <div class="col-6" >
-      <div class="card">
-        <div class="card-body">
-            <div class="container" >
-             <form action='{% url 'vlogin' %}' method="POST">
-              {% csrf_token %}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Log In</legend>
-                          <div class="form-group">
-                            <label for="Username">Username:</label>
-                            <input type="text" class="form-control" id="Username" placeholder="Enter Username" name="Username">
-                          </div>
-                          <div class="form-group">
-                            <label for="pwd">Password:</label>
-                            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-                          </div>
-                </fieldset>
-            
-                <div class="form-group">
-                        <button class="btn btn-outline-success" type="submit">Login</button>
-                </div>
-        </form>
-    </div>
-            <a href="#" class="btn btn-link">Forgot your password?</a>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <section class="social-menu">
-    
-  <h5>For any queries/issues please contact us at:</h5>
-  <ul>
-
-      <li><a href="#"><i class="fa fa-google"></i></a></li>
-      <li><a href="#"><i class="fa fa-paper-plane"></i></a></li>
-    <li><a href="#"><i class="fa fa-envelope"></i></a></li>
-     <li><a href="#"><i class="fa fa-yahoo"></i></a></li>
-  </ul>
-
-</section>  
-
-</body>
-
+    <table style="width:100%">
+        <tr>
+            <th>Year  </th>>
+            <th>Company Name   </th>
+            <th>Type   </th>
+            <th>Package  </th>
+            <th>Students Applied    </th>
+            <th>Students Placed</th>
+        </tr>
+        {% for j in plac %}
+        <tr>
+            <td>{{ j.pyear }}  </td>
+            <td>{{ j.company_name }}  </td>
+            <td>{{ j.ptype }}  </td>
+            <td>{{ j.package }}  </td>
+            <td>{{ j.students_applied }}  </td>
+            <td>{{ j.students_placed }}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    </body>
 </html>
+
+
+
+
+
+

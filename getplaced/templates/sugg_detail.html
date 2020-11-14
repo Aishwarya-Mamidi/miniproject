@@ -65,16 +65,17 @@
         </div>
     </nav>
     <article class="media content-section">
+        <div class="row">
         {% for i in sugg %}
-        <img class = "rounded-circle article-img" src = "">
+        <div class="col-lg-4">
         <div class="media-body">
             <div class="article-metadata">
             <a class="mr-2" href="#">{{ i.added_by }}</a>
             <small class="text-muted">{{ i.added_on|date:"F d, Y" }}</small>
             {% if request.session.username == i.added_by %}
                 <div>
-                    <a class = "btn btn-secondary btn-sm mt-1 mb-1" href = "{% url 'home' %}">Update</a>
-                    <a class = "btn btn-danger btn-sm mt-1 mb-1" href = "#">Delete</a>
+                    <!--<a class = "btn btn-secondary btn-sm mt-1 mb-1" href = "{% url 'home' %}">Update</a>-->
+                    <a class = "btn btn-danger btn-sm mt-1 mb-1" href = "{% url 'del_sugg' pk=i.pk %}">Delete</a>
                 </div>
             {% endif %}
             </div>
@@ -84,7 +85,9 @@
             <p class="article-content"><b>Video links:</b> {{ i.video_links }}</p>
             <!--<img src = "{{ object.site_image.url }}">-->
         </div>
+        </div>
         {%endfor%}
+        </div>
         </article>
     </body>
 </html>
