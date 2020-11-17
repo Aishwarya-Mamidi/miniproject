@@ -25,5 +25,10 @@ urlpatterns=[
     path('alogout/',views.alogout,name='alogout'),
     path('slogout/',views.slogout,name='slogout'),
     path('shome/',views.shome,name='shome'),
+    path('forgotpass/',views.forgotpass,name='forgotpass'),
+    path('forgot/',views.forgot,name='forgot'),
+    path('studprofile/',views.studprofile,name='studprofile'),
+    path('cprofile/',views.cprofile,name='cprofile'),
+    path('viewprofile/',views.viewprofile,name='viewprofile'),
 
 ]

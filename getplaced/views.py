@@ -14,8 +14,8 @@ from getplaced.models import Placement_History
 from getplaced.forms import Placement_HistoryForm
 from getplaced.models import Interview_details
 from getplaced.forms import Interview_detailsForm
-
-
+from getplaced.models import Sprofile
+from getplaced.forms import SprofileForm
 
 import requests
 def first(request):
@@ -59,6 +59,14 @@ def del_place_details(request,pk):
     k=get_object_or_404(Interview_details,pk=pk)
     k.delete()
     return redirect('/home')
+
+def viewprofile(request):
+    context={
+        'R':Student.objects.get(username=request.session["Username"]),
+        'P':Sprofile.objects.get(usern=request.session["Username"])
+    }
+    return render(request,'vprofile.html',context)
+
     
 def alogout(request):
     return redirect('/admlogin')
@@ -84,11 +92,15 @@ def viewplacedetails(request):
     }
     return render(request,'view_place_details.html',context)
 
+
 def sviewplacedetails(request):
     context={
         'details':Interview_details.objects.all()
     }
     return render(request,'sview_place_details.html',context)
+
+def studprofile(request):
+    return render(request,'sprofileform.html')
     
 
 def vlogin(request):
@@ -101,6 +113,7 @@ def vlogin(request):
             for c_users in Studtb.objects.all():
                # print(str(c_users.id))
                 if str(c_users.Username)==Username:
+                    request.session["Username"]=str(c_users.Username)
                     login_obj=c_users
                     break
                 else:
@@ -109,7 +122,7 @@ def vlogin(request):
                 if str(login_obj.pwd)==pwd:
                     return redirect('/shome')
                 else:
-                    return redirect('/vlogin')
+                    return redirect('/login')
         except:
             return HttpResponse("exception...")
 
@@ -117,6 +130,10 @@ def ssign(request):
     if request.method=='POST':
         username=request.POST['username']
         psd=request.POST['psd']
+        studname=request.POST['studname']
+        email_id=request.POST['email_id']
+        phoneno=request.POST['phoneno']
+        roll_no=request.POST['roll_no']
         form=StudentForm(request.POST)
         print(form.is_valid())
         print(form.errors)
@@ -174,6 +191,25 @@ def addsugg(request):
         form=StudentForm()
     return render(request,'add_sugg.html')
 
+def cprofile(request):
+    if request.method=='POST':
+        abt=request.POST['abt']
+        skl=request.POST['skl']
+        prjdesc=request.POST['prjdesc']
+        prjlink=request.POST['prjlink']
+        reslink=request.POST['reslink']
+        usern=request.POST['usern']
+        form=SprofileForm(request.POST)
+        print(form.is_valid())
+        print(form.errors)
+        if form.is_valid():
+            form.save()
+            return redirect('/viewprofile')
+    else:
+        form=SprofileForm()
+    return render(request,'sprofileform.html')
+
+
 def placehis(request):
     if request.method=='POST':
         pyear=request.POST['pyear']
@@ -213,6 +249,34 @@ def addplacedetails(request):
     else:
         form=Interview_detailsForm()
     return render(request,'add_place_details.html')
+
+def forgot(request):
+    return render(request,'forgotpass.html')
+
+def forgotpass(request):
+    if request.method == "POST":
+        try:
+            Username=request.POST['Username']
+            pwd=request.POST['pwd']
+            for c in Studtb.objects.all():
+                if str(c.Username)==Username:
+                    login_obj=c
+                    break
+                else:
+                    login_obj=None
+            if login_obj is not None:
+                k=Studtb.objects.get(Username=Username)
+                k.pwd=pwd
+                k.save()
+                return redirect('/login')
+            else:
+                return redirect('/forgotpass')               
+        except:
+            return HttpResponse("exception...")
+
+
+               
+
 
 
 

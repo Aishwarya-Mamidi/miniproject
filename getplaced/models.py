@@ -32,7 +32,14 @@ class Studtb(models.Model):
 class Profile(models.Model):
     roll_no=models.ForeignKey(Student,to_field="roll_no",db_column="roll_no",on_delete=models.CASCADE)
     resume=models.FileField()
-    
+
+class Sprofile(models.Model):
+    usern=models.CharField(max_length=25)
+    abt=models.CharField(max_length=25)
+    skl=models.CharField(max_length=25)
+    prjdesc=models.CharField(max_length=25)
+    prjlink=models.URLField(max_length=200)
+    reslink=models.URLField(max_length=200)
 
 class Project(models.Model):
     roll_no=models.ForeignKey(Student,to_field="roll_no",db_column="roll_no",on_delete=models.CASCADE)

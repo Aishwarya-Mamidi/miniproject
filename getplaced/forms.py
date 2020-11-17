@@ -5,6 +5,7 @@ from .models import Admintb
 from .models import Suggestions
 from .models import Placement_History
 from .models import Interview_details
+from .models import Sprofile
 
 class StudtbForm(forms.ModelForm):
     class Meta:
@@ -35,3 +36,7 @@ class Interview_detailsForm(forms.ModelForm):
         model=Interview_details
         fields=['company_name','job_title','job_description','requisites','selection_process','link','time','date','added_by','added_on']
 
+class SprofileForm(forms.ModelForm):
+    class Meta:
+        model=Sprofile
+        fields=['abt','skl','prjdesc','prjlink','reslink','usern']

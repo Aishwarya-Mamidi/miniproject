@@ -54,58 +54,34 @@
                    
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                  <a href="{% url 'opensugg' %}" class="btn btn-light ml-2">Suggestions</a>
-                  <a href="{% url 'viewsugg' %}" class="btn btn-outline-light">View suggestions</a>
-                  <a href="{%url 'placehis' %}" class="btn btn-outline-light">Add Placement history</a>
-                  <a href="{%url 'viewplacehis' %}" class="btn btn-outline-light">View Placement history</a>
-                  <a href="{%url 'addplacedetails' %}" class="btn btn-outline-light">Add Placement Details</a>
-              </form>
+                    <a href="{% url 'login' %}" class="btn btn-outline-light">Log in</a>
+                    <a href="{% url 'ssignup' %}" class="btn btn-outline-light">Sign up</a>
+                </form>
                 
             </div>
         </div>
     </nav>
-
-
-
-
 <div class="row justify-content-center" >
     <div class="col-6" >
       <div class="card">
         <div class="card-body">
             <div class="container" >
-             <form action='{% url 'addsugg' %}' method="POST">
+             <form action='{% url 'forgotpass' %}' method="POST">
               {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Add suggestion</legend>
+                    <legend class="border-bottom mb-4">Reset Password</legend>
                           <div class="form-group">
-                            <label for="title">Title:</label>
-                            <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+                            <label for="Username">Username:</label>
+                            <input type="text" class="form-control" id="Username" placeholder="Enter Username" name="Username">
                           </div>
                           <div class="form-group">
-                            <label for="tips">Tips:</label>
-                            <textarea rows="5" cols="50" class="form-control" id="tips" placeholder="Enter tips" name="tips"></textarea>
+                            <label for="pwd">New Password:</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="Enter new password" name="pwd">
                           </div>
-                          <div class="form-group">
-                            <label for="mock_tests">Mock_tests links:</label>
-                            <input type="url" class="form-control" id="mock_tests" placeholder="Enter mock_tests links" name="mock_tests">
-                          </div>
-                          <div class="form-group">
-                            <label for="video_links">Video links:</label>
-                            <input type="url" class="form-control" id="video_links" placeholder="Enter video links" name="video_links">
-                          </div>
-                          <div class="form-group">
-                            <label for="added_on">Date:</label>
-                            <input type="date" class="form-control" id="added_on" placeholder="Enter date" name="added_on">
-                          </div>
-                          <div class="form-group">
-                            <label for="added_by">Author:</label>
-                            <input type="test" class="form-control" id="added_by" placeholder="Enter username" name="added_by">
-                          </div>
-    
                 </fieldset>
             
                 <div class="form-group">
-                        <button class="btn btn-outline-success" type="submit">POST</button>
+                        <button class="btn btn-outline-success" type="submit">RESET</button>
                 </div>
         </form>
     </div>
@@ -115,8 +91,8 @@
       </div>
     </div>
   </div>
-  
- <!-- <section class="social-menu">
+  <!--
+  <section class="social-menu">
     
   <h5>For any queries/issues please contact us at:</h5>
   <ul>
@@ -127,7 +103,7 @@
      <li><a href="#"><i class="fa fa-yahoo"></i></a></li>
   </ul>
 
-</section>  -->
+</section> --> 
 
 </body>
 
