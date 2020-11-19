@@ -54,10 +54,11 @@
                    
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
+                    <a href="{% url 'studprofile' %}" class="btn btn-outline-light">Create Profile</a>
+                    <a href="{% url 'viewprofile' %}" class="btn btn-outline-light">View Profile</a>
                     <a href="{% url 'sviewsugg' %}" class="btn btn-outline-light">View suggestions</a>
                     <a href="{%url 'sviewplacehis' %}" class="btn btn-outline-light">View Placement history</a>
-                    <!--<a href="{%url 'addplacedetails' %}" class="btn btn-outline-light">Add Placement Details</a>-->
-                    <a href="{%url 'sviewplacedetails' %}" class="btn btn-outline-light">View Placement Details</a>
+                    <a href="{%url 'sviewplacedetails' %}" class="btn btn-light ml-2">View Placement Details</a>
                     <a href="{%url 'slogout' %}" class="btn btn-outline-light">logout</a>
                 </form>
                 
@@ -84,7 +85,7 @@
             <p class="article-content"><b>Job Description:</b>{{ k.job_description }} </p>
             <p class="article-content"><b>Requisites:</b> {{ k.requisites }}</p>
             <p class="article-content"><b>selection process:</b> {{ k.selection_process }}</p>
-            <p class="article-content"><b>link:</b> {{ k.link }}</p>
+            <p class="article-content"><b>Registration link:</b><a href="{{ k.link }}">Click here to register</a></p>
             <p class="article-content"><b>Date of test:</b> {{ k.date }}</p>
             <p class="article-content"><b>Time of test:</b> {{ k.time }}</p>
 
