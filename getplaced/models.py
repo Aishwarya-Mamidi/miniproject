@@ -35,9 +35,9 @@ class Profile(models.Model):
 
 class Sprofile(models.Model):
     usern=models.CharField(max_length=25)
-    abt=models.CharField(max_length=25)
-    skl=models.CharField(max_length=25)
-    prjdesc=models.CharField(max_length=25)
+    abt=models.TextField()
+    skl=models.TextField()
+    prjdesc=models.TextField()
     prjlink=models.URLField(max_length=200)
     reslink=models.URLField(max_length=200)
 
@@ -61,9 +61,9 @@ class Placement_History(models.Model):
 class Interview_details(models.Model):
     company_name=models.CharField(max_length=25)
     job_title=models.CharField(max_length=25)
-    job_description=models.CharField(max_length=25)
-    requisites=models.CharField(max_length=25)
-    selection_process=models.CharField(max_length=25)
+    job_description=models.TextField()
+    requisites=models.TextField()
+    selection_process=models.TextField()
     link=models.URLField(max_length=200,default="https://www.facebook.com")
     time=models.TimeField()
     date=models.DateField()
@@ -76,7 +76,7 @@ class Interview_details(models.Model):
 class Suggestions(models.Model):
     title=models.CharField(max_length=25)
     mock_tests=models.URLField(max_length=200)
-    tips=models.CharField(max_length=25)
+    tips=models.TextField()
     video_links=models.URLField(max_length=200)
     added_on=models.DateField()
     added_by=models.CharField(max_length=25)
