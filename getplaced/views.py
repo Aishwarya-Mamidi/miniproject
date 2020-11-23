@@ -122,6 +122,7 @@ def vlogin(request):
                 if str(login_obj.pwd)==pwd:
                     return redirect('/shome')
                 else:
+                    messages.error(request,'Username or password is incorrect')
                     return redirect('/login')
         except:
             return HttpResponse("exception...")
@@ -167,6 +168,7 @@ def alogin(request):
                 if str(login_obj.password)==password:
                     return redirect('/home')
                 else:
+                    messages.error(request,'Invalid credentials')
                     return redirect('/admlogin')
             return redirect('/admlogin')            
         except:

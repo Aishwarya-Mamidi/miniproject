@@ -90,7 +90,12 @@
                             <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
                           </div>
                 </fieldset>
-            
+                {% for message in messages %}
+                <div class="alert aler-success">
+                    <a close="close" href="#" data-dismiss="alert">x</a>
+                    {{ message }}
+                </div>
+                {% endfor %}
                 <div class="form-group">
                         <button class="btn btn-outline-success" type="submit">Login</button>
                 </div>
