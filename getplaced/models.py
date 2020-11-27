@@ -10,9 +10,9 @@ class Admintb(models.Model):
         return self.username
 
 class Student(models.Model):
-    roll_no=models.CharField(max_length=25,primary_key=True)
+    roll_no=models.CharField(max_length=12,primary_key=True)
     studname=models.CharField(max_length=25)
-    phoneno=models.IntegerField()
+    phoneno=models.CharField(max_length=10)
     email_id=models.EmailField(max_length=25)
     branch=models.CharField(max_length=25)
     sec=models.IntegerField()
@@ -29,9 +29,6 @@ class Studtb(models.Model):
     def __str__(self):
         return self.Username
         
-class Profile(models.Model):
-    roll_no=models.ForeignKey(Student,to_field="roll_no",db_column="roll_no",on_delete=models.CASCADE)
-    resume=models.FileField()
 
 class Sprofile(models.Model):
     usern=models.CharField(max_length=25)
@@ -88,7 +85,10 @@ class Register(models.Model):
     date=models.DateField()
     place=models.CharField(max_length=25)
 
-    
+class Profile(models.Model):
+    roll_no=models.ForeignKey(Student,to_field="roll_no",db_column="roll_no",on_delete=models.CASCADE)
+    resume=models.FileField()
+  
     
 
 
